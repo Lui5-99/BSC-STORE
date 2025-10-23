@@ -81,6 +81,10 @@ namespace BSC.Data
 				.HasOne(oi => oi.Product)
 				.WithMany(p => p.OrderItems)
 				.HasForeignKey(oi => oi.ProductId);
+
+			// -- Triggers --
+			modelBuilder.Entity<Inventory>()
+				.ToTable(tb => tb.HasTrigger("trg_InventoryAfterUpdate"));
 		}
 	}
 }

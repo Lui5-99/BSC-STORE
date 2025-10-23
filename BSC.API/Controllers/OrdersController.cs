@@ -18,7 +18,23 @@ namespace BSC.API.Controllers
 		public async Task<IActionResult> GetAll()
 		{
 			var orders = await _orderService.GetAllAsync();
-			return Ok(orders);
+			var orderDtos = orders.Select(order => new OrderDto
+			{
+				OrderId = order.OrderId,
+				OrderNumber = order.OrderNumber,
+				Total = order.Total,
+				OrderDate = order.CreatedAt,
+				SellerName = order.Seller.Username,
+				Items = [.. order.Items.Select(i => new OrderItemDto
+				{
+					OrderItemId = i.OrderItemId,
+					ProductId = i.ProductId,
+					ProductName = i.Product.Name,
+					Quantity = i.Quantity,
+					UnitPrice = i.UnitPrice
+				})]
+      });
+			return Ok(orderDtos);
 		}
 
 		// GET: api/Orders/5
@@ -27,7 +43,21 @@ namespace BSC.API.Controllers
 		{
 			var order = await _orderService.GetByIdAsync(id);
 			if (order == null) return NotFound();
-			return Ok(order);
+			var orderDto = new OrderDto
+			{
+				OrderId = order.OrderId,
+				OrderNumber = order.OrderNumber,
+				SellerName = order.Seller.Username,
+				Total = order.Total,
+				Items = [.. order.Items.Select(i => new OrderItemDto
+				{
+					ProductId = i.ProductId,
+					ProductName = i.Product.Name,
+					Quantity = i.Quantity,
+					UnitPrice = i.UnitPrice
+				})]
+      };
+			return Ok(orderDto);
 		}
 
 		// POST: api/Orders
@@ -36,9 +66,10 @@ namespace BSC.API.Controllers
 		{
 			try
 			{
-				var order = new Order 
+				var order = new Order
 				{
 					OrderNumber = "Prueba",
+					SellerUserId = dto.SellerId,
 					Items = [.. dto.Items.Select(i =>
 					{
 						return new OrderItem
