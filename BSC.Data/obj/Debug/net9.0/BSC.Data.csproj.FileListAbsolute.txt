@@ -1,0 +1,16 @@
+D:\dotnet\BSC-STORE\BSC.Data\bin\Debug\net9.0\BSC.Data.deps.json
+D:\dotnet\BSC-STORE\BSC.Data\bin\Debug\net9.0\BSC.Data.dll
+D:\dotnet\BSC-STORE\BSC.Data\bin\Debug\net9.0\BSC.Data.pdb
+D:\dotnet\BSC-STORE\BSC.Data\bin\Debug\net9.0\BSC.Models.dll
+D:\dotnet\BSC-STORE\BSC.Data\bin\Debug\net9.0\BSC.Models.pdb
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.csproj.AssemblyReference.cache
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.AssemblyInfoInputs.cache
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.AssemblyInfo.cs
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.csproj.CoreCompileInputs.cache
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.sourcelink.json
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.csproj.Up2Date
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.dll
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\refint\BSC.Data.dll
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\BSC.Data.pdb
+D:\dotnet\BSC-STORE\BSC.Data\obj\Debug\net9.0\ref\BSC.Data.dll

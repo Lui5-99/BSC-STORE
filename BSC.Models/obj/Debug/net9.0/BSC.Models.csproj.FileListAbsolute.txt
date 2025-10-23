@@ -1,6 +1,7 @@
 D:\dotnet\BSC-STORE\BSC.Models\bin\Debug\net9.0\BSC.Models.deps.json
 D:\dotnet\BSC-STORE\BSC.Models\bin\Debug\net9.0\BSC.Models.dll
 D:\dotnet\BSC-STORE\BSC.Models\bin\Debug\net9.0\BSC.Models.pdb
+D:\dotnet\BSC-STORE\BSC.Models\obj\Debug\net9.0\BSC.Models.csproj.AssemblyReference.cache
 D:\dotnet\BSC-STORE\BSC.Models\obj\Debug\net9.0\BSC.Models.GeneratedMSBuildEditorConfig.editorconfig
 D:\dotnet\BSC-STORE\BSC.Models\obj\Debug\net9.0\BSC.Models.AssemblyInfoInputs.cache
 D:\dotnet\BSC-STORE\BSC.Models\obj\Debug\net9.0\BSC.Models.AssemblyInfo.cs
