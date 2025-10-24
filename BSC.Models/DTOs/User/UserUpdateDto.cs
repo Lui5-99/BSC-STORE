@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BSC.Models.DTOs.User
 {
-    public class UserDto
+    public class UserUpdateDto
     {
-        public int UserId { get; set; }
         public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
         public int RoleId { get; set; }
-        public string RoleName { get; set; } = string.Empty;
     }
 }

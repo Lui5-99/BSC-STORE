@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BSC.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ccd42a9adc36650684db5a87dba6de089e9b682")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88870fec1472f9bc4d86f3d308a7916e8f14700d")]
 [assembly: System.Reflection.AssemblyProductAttribute("BSC.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BSC.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
