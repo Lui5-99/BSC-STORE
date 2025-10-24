@@ -18,9 +18,9 @@ namespace BSC.API.Controllers
 
         // GET: api/users
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers(int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetAllUsers(int pageNumber = 1, int pageSize = 10, string search = "")
         {
-            var (users, totalCount) = await _userService.GetAllAsync(pageNumber, pageSize);
+            var (users, totalCount) = await _userService.GetAllAsync(pageNumber, pageSize, search);
             // Mapear a DTO para evitar ciclos y exponer solo lo necesario
             var userDtos = users
                 .Select(u => new UserDto

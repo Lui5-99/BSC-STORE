@@ -11,6 +11,7 @@ namespace BSC.Models.DTOs.Order
 	{
 		[Required]
 		public int SellerId { get; set; } 
+		public string Customer { get; set; } = string.Empty;
 
 		[Required]
 		public List<OrderItemCreateDto> Items { get; set; } = [];

@@ -619,24 +619,31 @@
     ]
   },
   "packageFolders": {
-    "/home/luisarellano/.nuget/packages/": {}
+    "C:\\Users\\LuisAntonioArellanoB\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/luisarellano/Documentos/dotnet/BSC-STORE/BSC.Models/BSC.Models.csproj",
+      "projectUniqueName": "D:\\dotnet\\BSC-STORE\\BSC.Models\\BSC.Models.csproj",
       "projectName": "BSC.Models",
-      "projectPath": "/home/luisarellano/Documentos/dotnet/BSC-STORE/BSC.Models/BSC.Models.csproj",
-      "packagesPath": "/home/luisarellano/.nuget/packages/",
-      "outputPath": "/home/luisarellano/Documentos/dotnet/BSC-STORE/BSC.Models/obj/",
+      "projectPath": "D:\\dotnet\\BSC-STORE\\BSC.Models\\BSC.Models.csproj",
+      "packagesPath": "C:\\Users\\LuisAntonioArellanoB\\.nuget\\packages\\",
+      "outputPath": "D:\\dotnet\\BSC-STORE\\BSC.Models\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/luisarellano/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\LuisAntonioArellanoB\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -682,7 +689,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

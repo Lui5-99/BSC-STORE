@@ -29,8 +29,9 @@ namespace BSC.Business.Services
 
         public async Task<(IEnumerable<User> Items, int TotalCount)> GetAllAsync(
             int pageNumber,
-            int pageSize
-        )
+            int pageSize,
+            string search
+		)
         {
             // Validaciones básicas
             if (pageNumber < 1)
@@ -40,8 +41,13 @@ namespace BSC.Business.Services
 
             var query = _context.User.Include(p => p.Role).AsQueryable();
 
-            // Contamos el total de productos antes de paginar
-            var totalCount = await query.CountAsync();
+            if(!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(u => u.Username.Contains(search));
+			}
+
+			// Contamos el total de productos antes de paginar
+			var totalCount = await query.CountAsync();
 
             // Aplicamos paginación directamente en la base de datos
             var items = await query

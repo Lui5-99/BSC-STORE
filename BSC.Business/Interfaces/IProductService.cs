@@ -11,7 +11,8 @@ namespace BSC.Business.Interfaces
     {
         Task<(IEnumerable<Product> Items, int TotalCount)> GetAllAsync(
             int pageNumber,
-            int pageSize
+            int pageSize,
+            string search
         );
         Task<IEnumerable<Product>> GetAllToSearch();
         Task<Product?> GetByIdAsync(int id);

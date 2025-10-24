@@ -10,6 +10,7 @@ namespace BSC.Models.DTOs.Order
 	{
 		public int OrderId { get; set; }
 		public string OrderNumber { get; set; } = string.Empty;
+		public string Customer { get; set; } = string.Empty;
 		public decimal Total { get; set; }	
 		public DateTime OrderDate { get; set; }
 		public string SellerName { get; set; } = string.Empty;

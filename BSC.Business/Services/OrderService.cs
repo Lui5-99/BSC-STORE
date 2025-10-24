@@ -17,8 +17,9 @@ namespace BSC.Business.Services
 
         public async Task<(IEnumerable<Order> Items, int TotalCount)> GetAllAsync(
             int pageNumber,
-            int pageSize
-        )
+            int pageSize,
+            string search
+		)
         {
             // Validaciones básicas
             if (pageNumber < 1)
@@ -26,11 +27,21 @@ namespace BSC.Business.Services
             if (pageSize < 1)
                 pageSize = 10;
 
-            var query = _context
-                .Order.Include(oi => oi.Items)
+            var query = _context.Order
+                .Include(oi => oi.Items)
                 .ThenInclude(p => p.Product)
                 .Include(s => s.Seller)
                 .AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(search))
+            {
+                search = search.Trim().ToLower();
+
+                query = query.Where(o => 
+                   o.OrderNumber.ToLower().Contains(search) ||
+                   o.Seller.Username.ToLower().Contains(search)
+                );
+			}
 
             // Contamos el total de productos antes de paginar
             var totalCount = await query.CountAsync();
@@ -89,13 +100,15 @@ namespace BSC.Business.Services
             // Validar stock antes de crear
             foreach (var item in order.Items)
             {
-                var inventory = await _context.Inventory.FirstOrDefaultAsync(i =>
+                var inventory = await _context.Inventory.Include(p => p.Product).FirstOrDefaultAsync(i =>
                     i.ProductId == item.ProductId
                 );
 
+                var product = await _context.Product.FirstOrDefaultAsync(p => p.ProductId == item.ProductId);
+
                 if (inventory == null || inventory.Quantity < item.Quantity)
                     throw new InvalidOperationException(
-                        $"No hay suficiente stock del producto {item.ProductId}"
+                        $"No hay suficiente stock del producto {product?.Name}"
                     );
 
                 inventory.Quantity -= item.Quantity;

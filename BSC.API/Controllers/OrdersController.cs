@@ -19,7 +19,7 @@ namespace BSC.API.Controllers
 
         // GET: api/Orders
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10, string search = "")
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var role = User.FindFirstValue("roleName");
@@ -31,7 +31,7 @@ namespace BSC.API.Controllers
 
             if (isAdminOrSupervisor)
             {
-                (orders, totalCount) = await _orderService.GetAllAsync(pageNumber, pageSize);
+                (orders, totalCount) = await _orderService.GetAllAsync(pageNumber, pageSize, search);
             }
             else
             {
@@ -49,7 +49,8 @@ namespace BSC.API.Controllers
                 Total = order.Total,
                 OrderDate = order.CreatedAt,
                 SellerName = order.Seller.Username,
-                Items =
+                Customer = !string.IsNullOrEmpty(order.Customer) ? order.Customer : "N/A",
+				Items =
                 [
                     .. order.Items.Select(i => new OrderItemDto
                     {

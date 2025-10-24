@@ -15,9 +15,9 @@ namespace BSC.API.Controllers
 
         // GET: api/Products
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
+        public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10, string search = "")
         {
-            var (products, totalCount) = await _productService.GetAllAsync(pageNumber, pageSize);
+            var (products, totalCount) = await _productService.GetAllAsync(pageNumber, pageSize, search);
 
             var productsDtos = products
                 .Select(p => new ProductDto
@@ -62,7 +62,8 @@ namespace BSC.API.Controllers
         }
 
         // GET: api/Products/5
-        [HttpGet("{id}")]
+        [Authorize(Roles = "Administrador,Supervisor")]
+		[HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var product = await _productService.GetByIdAsync(id);
@@ -82,7 +83,8 @@ namespace BSC.API.Controllers
         }
 
         // POST: api/Products
-        [HttpPost]
+        [Authorize(Roles = "Administrador,Supervisor")]
+		[HttpPost]
         public async Task<IActionResult> Create([FromBody] ProductDto dto)
         {
             var product = new Product
@@ -104,6 +106,7 @@ namespace BSC.API.Controllers
         }
 
         // PUT: api/Products/5
+        [Authorize(Roles = "Administrador,Supervisor")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] ProductDto dto)
         {
@@ -127,7 +130,8 @@ namespace BSC.API.Controllers
         }
 
         // DELETE: api/Products/5
-        [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
+		[HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = await _productService.DeleteAsync(id);

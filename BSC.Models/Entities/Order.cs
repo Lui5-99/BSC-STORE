@@ -13,6 +13,7 @@ namespace BSC.Models.Entities
 		public int OrderId { get; set; }
 		[Required, StringLength(50)]
 		public string OrderNumber { get; set; } = null!;
+		public string Customer { get; set; } = string.Empty;
 		public int SellerUserId { get; set; }
 		public User Seller { get; set; } = null!;
 		public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
