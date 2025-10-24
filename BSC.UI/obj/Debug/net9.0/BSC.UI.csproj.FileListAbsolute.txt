@@ -7,6 +7,7 @@ D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\BSC.UI.deps.json
 D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\BSC.UI.runtimeconfig.json
 D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\BSC.UI.dll
 D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\BSC.UI.pdb
+D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\Blazored.LocalStorage.dll
 D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
 D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\dotnet\BSC-STORE\BSC.UI\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
@@ -87,7 +88,6 @@ D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\staticwebassets.build.json
 D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\staticwebassets.development.json
 D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\BSC.UI.csproj.Up2Date
 D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\BSC.UI.dll
 D:\dotnet\BSC-STORE\BSC.UI\obj\Debug\net9.0\refint\BSC.UI.dll

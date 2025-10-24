@@ -1,11 +1,14 @@
 ﻿using BSC.Business.Interfaces;
-using BSC.Models.Entities;
+using BSC.Business.Services;
 using BSC.Models.DTOs;
-using Microsoft.AspNetCore.Mvc;
 using BSC.Models.DTOs.User;
+using BSC.Models.Entities;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BSC.API.Controllers
 {
+	[Authorize]
 	[ApiController]
 	[Route("api/[controller]")]
 	public class UsersController(IUserService userService) : Controller
@@ -14,9 +17,9 @@ namespace BSC.API.Controllers
 
 		// GET: api/users
 		[HttpGet]
-		public async Task<IActionResult> GetAllUsers()
+		public async Task<IActionResult> GetAllUsers(int pageNumber = 1, int pageSize = 10)
 		{
-			var users = await _userService.GetAllAsync();
+			var (users, totalCount) = await _userService.GetAllAsync(pageNumber, pageSize);
 			// Mapear a DTO para evitar ciclos y exponer solo lo necesario
 			var userDtos = users.Select(u => new UserDto
 			{
@@ -25,7 +28,16 @@ namespace BSC.API.Controllers
 				RoleId = u.Role.RoleId,
 				RoleName = u.Role.Name
 			}).ToList();
-			return Ok(users);
+
+			var response = new
+			{
+				PageNumber = pageNumber,
+				PageSize = pageSize,
+				TotalCount = totalCount,
+				TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
+				Items = userDtos
+			};
+			return Ok(response);
 		}
 
 		// GET: api/users/{id}

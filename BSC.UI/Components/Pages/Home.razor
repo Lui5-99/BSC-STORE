@@ -1,7 +1,20 @@
 ﻿@page "/"
+@inject AuthService AuthService
+@inject ApiClient ApiClient
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthService.EnsureAuthenticatedAsync();
+
+        // Si llega aquí, hay token
+        // var datos = await ApiClient.GetAsync<DashboardDto>("dashboard");
+    }
+}

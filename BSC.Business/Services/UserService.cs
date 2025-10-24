@@ -26,8 +26,28 @@ namespace BSC.Business.Services
 			return user;
 		}
 
-		public async Task<IEnumerable<User>> GetAllAsync() =>
-			await _context.User.Include(u => u.Role).ToListAsync();
+		public async Task<(IEnumerable<User> Items, int TotalCount)> GetAllAsync(int pageNumber, int pageSize)
+		{
+			// Validaciones básicas
+			if (pageNumber < 1) pageNumber = 1;
+			if (pageSize < 1) pageSize = 10;
+
+			var query = _context.User
+				.Include(p => p.Role)
+				.AsQueryable();
+
+			// Contamos el total de productos antes de paginar
+			var totalCount = await query.CountAsync();
+
+			// Aplicamos paginación directamente en la base de datos
+			var items = await query
+				.OrderBy(u => u.Username)
+				.Skip((pageNumber - 1) * pageSize)
+				.Take(pageSize)
+				.ToListAsync();
+
+			return (items, totalCount);
+		}
 
 		public async Task<User?> GetByIdAsync(int id) =>
 			await _context.User.Include(u => u.Role).FirstOrDefaultAsync(u => u.UserId == id);

@@ -15,9 +15,9 @@ namespace BSC.API.Controllers
 
 		// GET: api/Orders
 		[HttpGet]
-		public async Task<IActionResult> GetAll()
+		public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
 		{
-			var orders = await _orderService.GetAllAsync();
+			var (orders, totalCount) = await _orderService.GetAllAsync(pageNumber, pageSize);
 			var orderDtos = orders.Select(order => new OrderDto
 			{
 				OrderId = order.OrderId,
@@ -33,8 +33,18 @@ namespace BSC.API.Controllers
 					Quantity = i.Quantity,
 					UnitPrice = i.UnitPrice
 				})]
-      });
-			return Ok(orderDtos);
+			});
+
+			var response = new
+			{
+				PageNumber = pageNumber,
+				PageSize = pageSize,
+				TotalCount = totalCount,
+				TotalPages = (int)Math.Ceiling(totalCount / (double)pageSize),
+				Items = orderDtos
+			};
+
+			return Ok(response);
 		}
 
 		// GET: api/Orders/5

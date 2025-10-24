@@ -9,7 +9,7 @@ namespace BSC.Business.Interfaces
 {
 	public interface IOrderService
 	{
-		Task<IEnumerable<Order>> GetAllAsync();
+		Task<(IEnumerable<Order> Items, int TotalCount)> GetAllAsync(int pageNumber, int pageSize);
 		Task<Order?> GetByIdAsync(int id);
 		Task<Order> CreateAsync(Order order);
 	}

@@ -1,10 +1,25 @@
+using Blazored.LocalStorage;
 using BSC.UI.Components;
+using BSC.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
 	.AddInteractiveServerComponents();
+
+builder.Services.AddBlazoredLocalStorage();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped(sp =>
+{
+	var httpClient = new HttpClient
+	{
+		BaseAddress = new Uri("https://localhost:7238/api/")
+	};
+
+	var authService = sp.GetRequiredService<AuthService>();
+	return new ApiClient(httpClient, authService);
+});
 
 var app = builder.Build();
 

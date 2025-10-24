@@ -10,7 +10,7 @@ namespace BSC.Business.Interfaces
 	public interface IUserService
 	{
 		Task<User?> AuthenticateAsync(string username, string password);
-		Task<IEnumerable<User>> GetAllAsync();
+		Task<(IEnumerable<User> Items, int TotalCount)> GetAllAsync(int pageNumber, int pageSize);
 		Task<User?> GetByIdAsync(int id);
 		Task<User> CreateAsync(User user, string password);
 		Task<bool> DeleteAsync(int id);

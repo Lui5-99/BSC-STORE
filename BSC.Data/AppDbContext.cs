@@ -15,6 +15,8 @@ namespace BSC.Data
 		public DbSet<Order> Order => Set<Order>();
 		public DbSet<OrderItem> OrderItem => Set<OrderItem>();
 
+		public DbSet<RefreshToken> RefreshToken { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			// --- Roles ---

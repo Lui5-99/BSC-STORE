@@ -14,8 +14,28 @@ namespace BSC.Business.Services
 	{
 		private readonly AppDbContext _context = context;
 
-		public async Task<IEnumerable<Product>> GetAllAsync() =>
-			await _context.Product.Include(p => p.Inventory).ToListAsync();
+		public async Task<(IEnumerable<Product> Items, int TotalCount)> GetAllAsync(int pageNumber, int pageSize)
+		{
+			// Validaciones básicas
+			if (pageNumber < 1) pageNumber = 1;
+			if (pageSize < 1) pageSize = 10;
+
+			var query = _context.Product
+				.Include(p => p.Inventory)
+				.AsQueryable();
+
+			// Contamos el total de productos antes de paginar
+			var totalCount = await query.CountAsync();
+
+			// Aplicamos paginación directamente en la base de datos
+			var items = await query
+				.OrderBy(p => p.ProductId)
+				.Skip((pageNumber - 1) * pageSize)
+				.Take(pageSize)
+				.ToListAsync();
+
+			return (items, totalCount);
+		}
 
 		public async Task<Product?> GetByIdAsync(int id) =>
 			await _context.Product.Include(p => p.Inventory)
@@ -89,7 +109,7 @@ namespace BSC.Business.Services
 		{
 			var product = await _context.Product.FindAsync(id);
 			if (product == null) return false;
-
+			_context.Inventory.RemoveRange(_context.Inventory.Where(i => i.ProductId == id));
 			_context.Product.Remove(product);
 			await _context.SaveChangesAsync();
 			return true;
